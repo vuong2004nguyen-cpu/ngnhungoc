@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỷ Niệm Thanh Xuân 12A2</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background:#f4f6f8;
+    color:#222;
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:4rem 1rem;
+    background:url("2.png") center/cover no-repeat;
+    position:relative;
+    color:white;
+}
+
+header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(2, 152, 252, 0.45);
+}
+
+header h1,
+header p{
+    position:relative;
+    z-index:1;
+}
+
+header h1{
+    font-size:2.5rem;
+    font-weight:600;
+}
+
+header p{
+    font-size:1rem;
+    margin-top:8px;
+    color:white;
+}
+
+/* NAV */
+nav{
+    background:white;
+    text-align:center;
+    padding:14px;
+    border-bottom:1px solid #e0e0e0;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    margin:0 18px;
+    text-decoration:none;
+    color:#2992dd;
+    font-weight:500;
+    transition:0.2s;
+}
+
+nav a:hover{
+    color:#1f6feb;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1000px;
+    margin:50px auto;
+    padding:40px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* SECTION */
+section{
+    margin-bottom:60px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.4s ease;
+}
+
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+h2{
+    font-size:1.8rem;
+    color:#1f2937;
+    margin-bottom:18px;
+    font-weight:600;
+}
+
+/* IMAGE */
+.intro-image img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.member-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #e5e7eb;
+    transition:0.2s ease;
+    text-align:center;
+}
+
+.member-card:hover{
+    transform:translateY(-4px);
+}
+
+.member-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.member-info{
+    padding:14px;
+}
+
+.member-info h3{
+    color:#111;
+    font-size:1rem;
+    margin-bottom:6px;
+}
+
+.member-info p{
+    font-size:0.85rem;
+    color:#666;
+}
+
+/* MEMORY */
+.memory-card{
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #e5e7eb;
+    transition:0.2s;
+}
+
+.memory-card:hover{
+    transform:scale(1.02);
+}
+
+.memory-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+/* CONTACT */
+.contact-highlight{
+    text-align:center;
+    padding:50px 30px;
+    border-radius:12px;
+    background:#e9eefc;
+    color:#1f2937;
+}
+
+.contact-btn{
+    display:inline-block;
+    padding:10px 24px;
+    background:#1f6feb;
+    color:white;
+    font-weight:500;
+    border-radius:20px;
+    text-decoration:none;
+    transition:0.2s;
+}
+
+.contact-btn:hover{
+    background:#174ea6;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    background:#f0f2f5;
+    color:#666;
+    font-size:0.9rem;
+}
+
+/* BACK TO TOP */
+#backToTop{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#1f6feb;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    text-align:center;
+    line-height:45px;
+    font-size:18px;
+    text-decoration:none;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+    transition:0.2s;
+}
+
+#backToTop:hover{
+    background:#174ea6;
+}
+/* STAR EFFECT */
+.stars{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:999;
+}
+
+.star{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:gold;
+    clip-path:polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+    animation:fall linear infinite;
+    opacity:0.9;
+}
+@keyframes fall{
+    0%{
+        transform:translateY(-100px) translateX(0) rotate(0deg);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(100vh) translateX(-150px) rotate(360deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body id="top">
+<div class="stars"></div>
+<div class="rainbow"></div>
+
+<header>
+<div class="sun">☀</div>
+<h1>TRƯỜNG THPT KRÔNG BÔNG - LỚP 12A2</h1>
+<p>Kỷ niệm dưới mái trường thanh xuân</p>
+</header>
+
+<nav>
+<a href="#loichao">Lời ngỏ</a>
+<a href="#hinhanh">Các kỉ niệm đáng nhớ</a>
+<a href="#camnghi">Cảm nghĩ</a>
+<a href="lienhe.html">Liên hệ</a>
+</nav>
+
+<div class="container">
+
+<section id="loichao">
+<h2>Lời ngỏ</h2>
+
+<div class="intro-image">
+    <img src="ảnh/anhthpt.jpg" alt="Trường THPT Krông Bông">
+</div>
+
+<p>
+Ba năm cấp ba không quá dài, nhưng đủ để lưu lại những ký ức đẹp nhất của thanh xuân...
+</p>
+
+</section>
+
+<section id="hinhanh">
+<h2>Các kỉ niệm đáng nhớ</h2>
+<div class="gallery">
+
+<div class="memory-card">
+    <img src="ảnh/anh1.jpg" alt="Ảnh cùng thầy chủ nhiệm">
+</div>
+
+<div class="memory-card">
+    <img src="ảnh/ảnh4.jpg" alt="Ảnh cùng thầy chủ nhiệm">
+</div>
+
+<div class="memory-card">
+    <img src="ảnh/anh2.jpg" alt="Ảnh bạn bè">
+</div>
+
+<div class="memory-card">
+    <img src="ảnh/anh3.jpg" alt="Ảnh bạn bè">
+</div>
+
+<div class="memory-card">
+    <img src="ảnh/anh5.jpg" alt="Ảnh bạn bè">
+</div>
+
+<div class="memory-card">
+    <img src="ảnh/anh6.jpg" alt="Ảnh bạn bè">
+</div>
+
+
+
+
+</div>
+</section>
+
+<section id="camnghi">
+<h2>Cảm nghĩ</h2>
+<p>Gửi tôi của một thời áo trắng...</p>
+<p>Người học trò lần đầu chạm tay vào cánh cổng sắt còn mùi sơn mới, lòng đầy háo hức mà chẳng hề biết ba năm ấy sẽ trôi nhanh đến thế. Khi đó, bầu trời dường như cao hơn, con đường đến trường dài hơn, và mỗi buổi sáng là một hành trình nho nhỏ mang theo bao điều chưa kịp gọi tên. Tiếng trống vang lên giữa sân trường không chỉ báo giờ học bắt đầu, mà còn mở ra những ngày tháng trong trẻo nhất của tuổi mười bảy.</p>
+<p>Những năm ấy, ta lớn dần lên bằng những bài học giản đơn: học cách tự đứng dậy sau một điểm số chưa như ý, học cách nói lời xin lỗi khi lỡ làm ai buồn, học cách bước qua những ngại ngùng để kết bạn và giữ lấy một tình bạn thật lâu. Có những chiều nắng vương trên bậc thềm lớp học, ta ngồi nghe gió thổi qua tán cây và bỗng thấy lòng mình bình yên đến lạ. Cũng có những ngày mưa, trang vở ướt nhòe cùng tâm trạng, nhưng rồi tất cả lại qua đi, để lại trong ta một chút cứng cáp của trưởng thành.</p>
+<p>Thanh xuân khi ấy không cần điều gì quá lớn lao. Chỉ là những lần cùng nhau ôn bài sát giờ kiểm tra, những tiếng cười vang lên ở cuối lớp, những ánh mắt lặng lẽ tìm nhau giữa đám đông. Ta từng nghĩ mình sẽ nhớ những thành tích treo trên bảng vàng, nhưng sau này mới hiểu: điều ở lại lâu nhất lại là mùi phấn bảng, là tiếng ghế kéo xôn xao, là buổi trưa gục đầu xuống bàn nghe quạt trần quay đều đều.</p>
+<p>Thầy cô đã bước vào cuộc đời ta bằng sự tận tâm và niềm tin âm thầm. Có lời nhắc nhở khiến ta buồn, nhưng cũng chính từ đó ta học được trách nhiệm. Có ánh nhìn động viên giúp ta tin rằng mình có thể đi xa hơn những gì từng nghĩ. Những trang sách không chỉ mở ra tri thức, mà còn mở ra cách ta đối diện với thế giới rộng lớn ngoài kia.</p>
+<p>Rồi ngày chia tay cũng đến, nhẹ như một cơn gió cuối hè. Sân trường vẫn thế, hàng cây vẫn đứng đó, chỉ có chúng ta là sắp sửa rời đi. Ta ôm nhau thật chặt, hứa hẹn về những lần gặp lại, dù sâu trong lòng hiểu rằng mỗi người sẽ bước về một phía của tương lai. Cánh cổng khép lại, khép luôn một quãng đời không thể quay lại.</p>
+<p>Gửi tôi của những năm tháng ấy – cảm ơn vì đã sống hết mình, đã dám ước mơ và dám sai để rồi học cách đúng. Nếu mai này giữa bộn bề cuộc sống, lòng chợt mỏi mệt, hãy nhớ rằng từng có một thời ta đã tin vào ngày mai bằng tất cả sự hồn nhiên. Và chính niềm tin ấy sẽ còn ở lại, như một vùng sáng dịu dàng trong ký ức, nhắc ta nhớ mình đã từng trẻ đến thế.</p>
+</section>
+
+<section id="lienhe-home" class="contact-highlight">
+    <h2>Liên hệ với 12A2 </h2>
+    <p>
+        Bạn muốn gửi lời nhắn, chia sẻ kỷ niệm hoặc gửi lời chúc đến tập thể 12A2?
+        Chúng mình luôn sẵn sàng lắng nghe 💖
+    </p>
+<a href="./lienhe.html" class="contact-btn">
+    Gửi lời nhắn ngay
+</a>
+
+
+</section>
+
+</div>
+
+
+<footer>
+<p>© 2026 - Bản quyền thuộc về Tập thể lớp 12 - Trường THPT Krông Bông</p>
+</footer>
+
+<a href="#top" id="backToTop">↑</a>
+
+<script>
+// hiệu ứng xuất hiện
+const sections=document.querySelectorAll("section");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity=1;
+entry.target.style.transform="translateY(0)";
+}
+});
+});
+sections.forEach(section=>observer.observe(section));
+</script>
+<script>
+const starsContainer = document.querySelector(".stars");
+
+function createStar(){
+    const star = document.createElement("div");
+    star.classList.add("star");
+
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+    starsContainer.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 6000);
+}
+
+setInterval(createStar, 400);
+</script>
+</body>
+</html>
